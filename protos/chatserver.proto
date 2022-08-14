@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.chat";
+option java_outer_classname = "ChatService";
+option objc_class_prefix = "CS";
+
+package chat_service;
+
+service Message {
+  rpc SendMessage (MessageData) returns (StatusMessage) {}
+
+  rpc ForwardMessage (MessageData) returns (StatusMessage) {}
+}
+
+message MessageData {
+  string remt = 1;
+  string dest = 2;
+  string ip_dest = 3;
+  string msg = 4;
+}
+
+message StatusMessage {
+  string message = 1;
+}
